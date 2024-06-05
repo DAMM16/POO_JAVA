@@ -66,13 +66,16 @@ public class GUIBuscaMinas {
         panel.add(reiniciarBtn);
         
         // Botones de las minas
+        CreadorCeldaBtn creadorCeldas = new CreadorCeldaBtn(30);
         JButton[][] botones = new JButton[mapSize][mapSize];
         for (int i = 0; i < mapSize; i++) {
             for (int j = 0; j < mapSize; j++) {
-                botones[i][j] = new JButton();
+                botones[i][j] = creadorCeldas.createButton(i,j);
+                /*new JButton();
                 botones[i][j].setBounds(10+i*30, 70+j*30, 30, 30);
                 botones[i][j].setFont(new Font("Arial", Font.BOLD, 18));
                 botones[i][j].setMargin(new Insets(0, 0, 0, 0));
+                */
                 panel.add(botones[i][j]);
             }
         }
