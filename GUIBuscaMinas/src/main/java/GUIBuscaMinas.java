@@ -1,7 +1,5 @@
 
 import java.awt.Color;
-import java.awt.Font;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -12,11 +10,14 @@ import javax.swing.JPanel;
 
 /*
  * Buscaminas
+ * 
+ * Implementación del juego Buscaminas.
+ * 
  */
 
 /**
  *
- * @author diego
+ * @author Diego (https://github.com/DAMM16)
  */
 public class GUIBuscaMinas {
     public static int mapSize=10;
@@ -62,7 +63,7 @@ public class GUIBuscaMinas {
  
         // Boton reiniciar
         JButton reiniciarBtn = new JButton("=)");
-        reiniciarBtn.setBounds(5+mapSize*15, 5,50 , 50);
+        reiniciarBtn.setBounds(5+mapSize*15,5,50,50);
         panel.add(reiniciarBtn);
         
         // Botones de las minas
@@ -71,11 +72,6 @@ public class GUIBuscaMinas {
         for (int i = 0; i < mapSize; i++) {
             for (int j = 0; j < mapSize; j++) {
                 botones[i][j] = creadorCeldas.createButton(i,j);
-                /*new JButton();
-                botones[i][j].setBounds(10+i*30, 70+j*30, 30, 30);
-                botones[i][j].setFont(new Font("Arial", Font.BOLD, 18));
-                botones[i][j].setMargin(new Insets(0, 0, 0, 0));
-                */
                 panel.add(botones[i][j]);
             }
         }
@@ -99,7 +95,7 @@ public class GUIBuscaMinas {
                     }
                     // si no tiene minas en los vecinos, debe liberar la casilla y ver los vecimos
                     if(map.cantidadMinas[ci][cj]==0){
-                        probarvecinos(botones,ci,cj);
+                        probarVecinos(botones,ci,cj);
                     }
                     // Si hay una mina debe mostrar la posición de todas las minas
                     if(map.cantidadMinas[ci][cj]==-1){
@@ -150,20 +146,20 @@ public class GUIBuscaMinas {
         return null; // retornar null si el elemento no se encuentra
     }
     // Método para ver los vecinos de una celda sin minas vecinas
-    public static void probarvecinos(JButton[][] botones,int ci, int cj){
+    public static void probarVecinos(JButton[][] botones,int ci, int cj){
         JButton btn = botones[ci][cj];
         if(map.cantidadMinas[ci][cj]>0){
             btn.setText(""+map.cantidadMinas[ci][cj]);
             btn.setEnabled(false);
         }
-        // si no tiene minas en los vecinos, debe liberar la casilla y ver los vecimos
+        // si no tiene minas en los vecinos, debe liberar la casilla y ver los vecinos
 
         if(map.cantidadMinas[ci][cj]==0 && btn.isEnabled()){
             btn.setEnabled(false);
             for (int i = -1; i <= 1; i++) {
                 for (int j = -1; j <= 1; j++) {
                     if(0<=ci+i && ci+i <mapSize && 0<=cj+j && cj+j <mapSize){
-                        probarvecinos(botones,ci+i,cj+j);
+                        probarVecinos(botones,ci+i,cj+j);
                     }
                 }
 
