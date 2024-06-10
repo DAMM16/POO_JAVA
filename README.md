@@ -2,6 +2,7 @@
 
 Indice de proyectos:
 
+- Patrones de Diseño ./Patrones de Diseño 
 - Buscaminas ./GUIBuscaMinas
 
 ---
