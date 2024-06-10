@@ -16,7 +16,6 @@ import javax.swing.JPanel;
  */
 
 /**
- *
  * @author Diego (https://github.com/DAMM16)
  */
 public class GUIBuscaMinas {
